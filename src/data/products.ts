@@ -1,0 +1,93 @@
+import { Product } from "@/types/product";
+
+export const products: Product[] = [
+  {
+    id: "1",
+    name: "Soft Touch Board Book",
+    category: "Board Books",
+    price: 24.99,
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+  {
+    id: "2",
+    name: "Animal Friends Board Book",
+    category: "Board Books",
+    price: 22.99,
+    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+  {
+    id: "3",
+    name: "Wooden Animal Puzzle",
+    category: "Board Puzzles",
+    price: 34.99,
+    image: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+  {
+    id: "4",
+    name: "Safari Adventure Puzzle",
+    category: "Board Puzzles",
+    price: 29.99,
+    image: "https://images.unsplash.com/photo-1606503153255-59d8b2e4739e?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+  {
+    id: "5",
+    name: "New Mom Wellness Hamper",
+    category: "New Mom Hampers",
+    price: 89.99,
+    image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+  {
+    id: "6",
+    name: "Mom's Relaxation Bundle",
+    category: "New Mom Hampers",
+    price: 79.99,
+    image: "https://images.unsplash.com/photo-1549488344-cbb6c34cf08b?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+  {
+    id: "7",
+    name: "Welcome Baby Gift Set",
+    category: "Newborn Hampers",
+    price: 99.99,
+    image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+  {
+    id: "8",
+    name: "Newborn Essentials Bundle",
+    category: "Newborn Hampers",
+    price: 119.99,
+    image: "https://images.unsplash.com/photo-1522771930-78848d9293e8?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+  {
+    id: "9",
+    name: "Party Favor Hamper",
+    category: "Return Gift Hampers",
+    price: 44.99,
+    image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+  {
+    id: "10",
+    name: "Custom Thank You Bundle",
+    category: "Return Gift Hampers",
+    price: 54.99,
+    image: "https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=600&h=600&fit=crop",
+    description: "Fill in product details",
+  },
+];
+
+export const categories = [
+  "All",
+  "Board Books",
+  "Board Puzzles",
+  "New Mom Hampers",
+  "Newborn Hampers",
+  "Return Gift Hampers",
+];
