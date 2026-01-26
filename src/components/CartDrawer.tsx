@@ -1,5 +1,8 @@
 import { X, Plus, Minus, Trash2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useRegion } from "@/context/RegionContext";
+import { getProductPrice } from "@/types/product";
+import { formatPrice } from "@/lib/currency";
 import { Button } from "@/components/ui/button";
 
 interface CartDrawerProps {
@@ -8,8 +11,9 @@ interface CartDrawerProps {
 }
 
 const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
-  const { cartItems, removeFromCart, updateQuantity, cartTotal, clearCart } =
+  const { cartItems, removeFromCart, updateQuantity, getCartTotal, clearCart } =
     useCart();
+  const { region } = useRegion();
 
   if (!isOpen) return null;
 
@@ -50,53 +54,56 @@ const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
               </div>
             ) : (
               <div className="space-y-4">
-                {cartItems.map((item) => (
-                  <div
-                    key={item.id}
-                    className="flex gap-4 p-4 bg-muted/50 rounded-xl"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-20 h-20 object-cover rounded-lg"
-                    />
-                    <div className="flex-1">
-                      <h3 className="font-medium text-foreground">
-                        {item.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        ${item.price.toFixed(2)}
-                      </p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <button
-                          onClick={() =>
-                            updateQuantity(item.id, item.quantity - 1)
-                          }
-                          className="p-1 hover:bg-background rounded transition-colors"
-                        >
-                          <Minus className="w-4 h-4" />
-                        </button>
-                        <span className="w-8 text-center font-medium">
-                          {item.quantity}
-                        </span>
-                        <button
-                          onClick={() =>
-                            updateQuantity(item.id, item.quantity + 1)
-                          }
-                          className="p-1 hover:bg-background rounded transition-colors"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => removeFromCart(item.id)}
-                          className="ml-auto p-1 text-destructive hover:bg-destructive/10 rounded transition-colors"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                {cartItems.map((item) => {
+                  const itemPrice = getProductPrice(item, region);
+                  return (
+                    <div
+                      key={item.id}
+                      className="flex gap-4 p-4 bg-muted/50 rounded-xl"
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-20 h-20 object-cover rounded-lg"
+                      />
+                      <div className="flex-1">
+                        <h3 className="font-medium text-foreground">
+                          {item.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {formatPrice(itemPrice, region)}
+                        </p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <button
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity - 1)
+                            }
+                            className="p-1 hover:bg-background rounded transition-colors"
+                          >
+                            <Minus className="w-4 h-4" />
+                          </button>
+                          <span className="w-8 text-center font-medium">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity + 1)
+                            }
+                            className="p-1 hover:bg-background rounded transition-colors"
+                          >
+                            <Plus className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => removeFromCart(item.id)}
+                            className="ml-auto p-1 text-destructive hover:bg-destructive/10 rounded transition-colors"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
@@ -107,7 +114,7 @@ const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
               <div className="flex items-center justify-between text-lg">
                 <span className="font-medium">Total</span>
                 <span className="font-semibold text-primary">
-                  ${cartTotal.toFixed(2)}
+                  {formatPrice(getCartTotal(region), region)}
                 </span>
               </div>
               <Button className="w-full btn-primary py-6 text-lg font-medium">

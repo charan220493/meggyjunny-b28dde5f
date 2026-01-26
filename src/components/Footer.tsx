@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Instagram, Facebook } from "lucide-react";
+import RegionToggle from "./RegionToggle";
 
 const Footer = () => {
   return (
@@ -77,8 +78,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-primary-foreground/60">
-          <p>© 2024 Little Wonders. All rights reserved.</p>
+        <div className="border-t border-primary-foreground/20 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-primary-foreground/60">
+            © 2024 Little Wonders. All rights reserved.
+          </p>
+          <RegionToggle />
         </div>
       </div>
     </footer>

@@ -1,6 +1,8 @@
 import { ShoppingCart } from "lucide-react";
-import { Product } from "@/types/product";
+import { Product, getProductPrice } from "@/types/product";
 import { useCart } from "@/context/CartContext";
+import { useRegion } from "@/context/RegionContext";
+import { formatPrice } from "@/lib/currency";
 import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
@@ -9,6 +11,8 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCart();
+  const { region } = useRegion();
+  const price = getProductPrice(product, region);
 
   return (
     <div className="card-product group">
@@ -32,7 +36,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </p>
         <div className="flex items-center justify-between">
           <span className="text-xl font-semibold text-primary">
-            ${product.price.toFixed(2)}
+            {formatPrice(price, region)}
           </span>
           <Button
             onClick={() => addToCart(product)}

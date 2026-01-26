@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { products, categories } from "@/data/products";
+import { useRegion } from "@/context/RegionContext";
 import ProductCard from "./ProductCard";
 
 const ProductsSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const { region } = useRegion();
+
+  // Filter products by region first, then by category
+  const regionProducts = products.filter((product) =>
+    product.availableIn.includes(region)
+  );
 
   const filteredProducts =
     activeCategory === "All"
-      ? products
-      : products.filter((product) => product.category === activeCategory);
+      ? regionProducts
+      : regionProducts.filter((product) => product.category === activeCategory);
 
   return (
     <section id="products" className="section-padding bg-background">

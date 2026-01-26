@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { CartItem, Product } from "@/types/product";
+import { CartItem, Product, getProductPrice } from "@/types/product";
+import { Region } from "@/lib/currency";
 import { toast } from "sonner";
 
 interface CartContextType {
@@ -8,6 +9,7 @@ interface CartContextType {
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
+  getCartTotal: (region: Region) => number;
   cartTotal: number;
   cartCount: number;
 }
@@ -55,10 +57,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     toast.info("Cart cleared");
   };
 
-  const cartTotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const getCartTotal = (region: Region) => {
+    return cartItems.reduce(
+      (total, item) => total + getProductPrice(item, region) * item.quantity,
+      0
+    );
+  };
+
+  // For backward compatibility, default to US pricing
+  const cartTotal = getCartTotal('US');
 
   const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
 
@@ -70,6 +77,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         removeFromCart,
         updateQuantity,
         clearCart,
+        getCartTotal,
         cartTotal,
         cartCount,
       }}

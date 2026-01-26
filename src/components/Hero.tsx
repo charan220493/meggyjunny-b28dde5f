@@ -1,8 +1,14 @@
 import { products } from "@/data/products";
+import { useRegion } from "@/context/RegionContext";
 
 const Hero = () => {
-  // Duplicate products for seamless loop
-  const scrollProducts = [...products, ...products];
+  const { region } = useRegion();
+  
+  // Filter products by region, then duplicate for seamless loop
+  const regionProducts = products.filter((product) =>
+    product.availableIn.includes(region)
+  );
+  const scrollProducts = [...regionProducts, ...regionProducts];
 
   return (
     <section id="home" className="pt-20 md:pt-24">
