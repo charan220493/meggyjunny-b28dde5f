@@ -9,8 +9,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <h3 className="text-3xl font-display font-semibold mb-4">
-              Little Wonders
+            <h3 className="text-3xl font-brand font-semibold mb-4">
+              Meggy &amp; Junny
             </h3>
             <p className="text-primary-foreground/80 max-w-md mb-6">
               Creating beautiful moments for babies, new parents, and families. 
@@ -86,7 +86,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-primary-foreground/60">
-            © 2024 Little Wonders. All rights reserved.
+            © 2024 Meggy &amp; Junny. All rights reserved.
           </p>
           <RegionToggle />
         </div>

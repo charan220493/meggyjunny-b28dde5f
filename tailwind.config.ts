@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         display: ['Cormorant Garamond', 'serif'],
         body: ['Nunito', 'sans-serif'],
+        brand: ['Quicksand', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
