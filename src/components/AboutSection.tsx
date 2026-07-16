@@ -8,7 +8,7 @@ const AboutSection = () => {
               Crafted with Love
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              At Little Wonders, we believe every child deserves to grow up surrounded 
+              At Meggy &amp; Junny, we believe every child deserves to grow up surrounded 
               by beautiful, thoughtfully designed products that spark imagination and 
               create lasting memories.
             </p>
