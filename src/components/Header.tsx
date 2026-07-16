@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import CartDrawer from "./CartDrawer";
@@ -42,6 +43,12 @@ const Header = () => {
               >
                 Products
               </button>
+              <Link
+                to="/resources"
+                className="text-foreground/80 hover:text-primary transition-colors font-medium"
+              >
+                Resources
+              </Link>
               <button
                 onClick={() => scrollToSection("about")}
                 className="text-foreground/80 hover:text-primary transition-colors font-medium"
@@ -99,6 +106,13 @@ const Header = () => {
                 >
                   Products
                 </button>
+                <Link
+                  to="/resources"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-left text-foreground/80 hover:text-primary transition-colors font-medium py-2"
+                >
+                  Resources
+                </Link>
                 <button
                   onClick={() => scrollToSection("about")}
                   className="text-left text-foreground/80 hover:text-primary transition-colors font-medium py-2"
