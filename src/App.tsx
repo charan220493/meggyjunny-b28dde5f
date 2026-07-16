@@ -7,6 +7,7 @@ import { CartProvider } from "@/context/CartContext";
 import { RegionProvider } from "@/context/RegionContext";
 import RegionSelector from "@/components/RegionSelector";
 import Index from "./pages/Index";
+import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,8 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/resources/:slug" element={<Resources />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

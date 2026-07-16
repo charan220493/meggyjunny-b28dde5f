@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Instagram, Facebook } from "lucide-react";
 import RegionToggle from "./RegionToggle";
 
@@ -44,6 +45,11 @@ const Footer = () => {
                 <a href="#about" className="hover:text-primary-foreground transition-colors">
                   About Us
                 </a>
+              </li>
+              <li>
+                <Link to="/resources" className="hover:text-primary-foreground transition-colors">
+                  Resource Guide
+                </Link>
               </li>
               <li>
                 <a href="#" className="hover:text-primary-foreground transition-colors">
