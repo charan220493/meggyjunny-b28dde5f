@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import CartDrawer from "./CartDrawer";
+import logo from "@/assets/meggy-junny-logo.png.asset.json";
 
 const Header = () => {
   const { cartCount } = useCart();
@@ -23,11 +24,16 @@ const Header = () => {
         <div className="container-main">
           <div className="flex items-center justify-between h-16 md:h-20 px-4">
             {/* Logo */}
-            <div className="flex items-center">
-              <h1 className="text-2xl md:text-3xl font-display font-semibold text-primary">
-                Little Wonders
-              </h1>
-            </div>
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src={logo.url}
+                alt="Meggy & Junny logo"
+                className="h-12 md:h-14 w-auto"
+              />
+              <span className="font-brand font-semibold text-xl md:text-2xl text-primary">
+                Meggy &amp; Junny
+              </span>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">

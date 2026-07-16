@@ -26,8 +26,8 @@ const RegionSelector = () => {
     <Dialog open={isFirstVisit} onOpenChange={() => {}}>
       <DialogContent className="sm:max-w-md" onPointerDownOutside={(e) => e.preventDefault()}>
         <DialogHeader>
-          <DialogTitle className="text-2xl font-display text-center text-primary">
-            Welcome to Little Wonders! 🎀
+          <DialogTitle className="text-2xl font-brand font-semibold text-center text-primary">
+            Welcome to Meggy &amp; Junny! 🎀
           </DialogTitle>
           <DialogDescription className="text-center text-muted-foreground">
             Please select your location to see products and prices available in your region.
